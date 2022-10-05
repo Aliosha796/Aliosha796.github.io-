@@ -16,21 +16,22 @@
   <meta name="author" content="Joe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="手势识别 import cv2 import mediapipe as mp import time  # 连接摄像头 cap &#x3D; cv2.VideoCapture(0) mpHands &#x3D; mp.solutions.hands hands &#x3D; mpHands.Hands() mpDraw &#x3D; mp.solutions.drawing_utils  # 设置线条和点的样式 handLmsStyle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/10/05/hello-world/index.html">
+<meta property="og:title" content="openCV手部识别">
+<meta property="og:url" content="http://example.com/2022/10/05/openCV%E6%89%8B%E9%83%A8%E8%AF%86%E5%88%AB/index.html">
 <meta property="og:site_name" content="我的个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="手势识别 import cv2 import mediapipe as mp import time  # 连接摄像头 cap &#x3D; cv2.VideoCapture(0) mpHands &#x3D; mp.solutions.hands hands &#x3D; mpHands.Hands() mpDraw &#x3D; mp.solutions.drawing_utils  # 设置线条和点的样式 handLmsStyle">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-05T13:52:02.982Z">
-<meta property="article:modified_time" content="2022-10-05T13:52:02.982Z">
+<meta property="article:published_time" content="2022-10-05T14:32:38.000Z">
+<meta property="article:modified_time" content="2022-10-05T15:00:36.690Z">
 <meta property="article:author" content="Joe">
+<meta property="article:tag" content="计算机视觉">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - 我的个人博客</title>
+  <title>openCV手部识别 - 我的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="openCV手部识别"></span>
           
         </div>
 
@@ -206,7 +207,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-05 21:52" pubdate>
+        <time datetime="2022-10-05 22:32" pubdate>
           2022年10月5日 晚上
         </time>
       </span>
@@ -218,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          363 字
+          1.2k 字
         
       </span>
     
@@ -229,7 +230,7 @@
         
         
         
-          4 分钟
+          11 分钟
         
       </span>
     
@@ -267,24 +268,57 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">openCV手部识别</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="code-wrapper"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span></code></pre></div>
+                <p>手势识别</p>
+<div class="code-wrapper"><pre><code class="hljs py"><span class="hljs-keyword">import</span> cv2
+<span class="hljs-keyword">import</span> mediapipe <span class="hljs-keyword">as</span> mp
+<span class="hljs-keyword">import</span> time
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="code-wrapper"><pre><code class="hljs bash">$ hexo server</code></pre></div>
+<span class="hljs-comment"># 连接摄像头</span>
+cap = cv2.VideoCapture(<span class="hljs-number">0</span>)
+mpHands = mp.solutions.hands
+hands = mpHands.Hands()
+mpDraw = mp.solutions.drawing_utils
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="code-wrapper"><pre><code class="hljs bash">$ hexo generate</code></pre></div>
+<span class="hljs-comment"># 设置线条和点的样式</span>
+handLmsStyle = mpDraw.DrawingSpec(color=(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">255</span>), thickness=<span class="hljs-number">2</span>)  <span class="hljs-comment"># mpDraw.DrawingSpec(color=(GBR色值), 线条粗细程度)</span>
+handConStyle = mpDraw.DrawingSpec(color=(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0</span>), thickness=<span class="hljs-number">5</span>)  <span class="hljs-comment"># mpDraw.DrawingSpec(color=(GBR色值), 线条粗细程度)</span>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="code-wrapper"><pre><code class="hljs bash">$ hexo deploy</code></pre></div>
+pTime = <span class="hljs-number">0</span>
+cTime = <span class="hljs-number">0</span>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
+    ret, img = cap.read()
+    <span class="hljs-keyword">if</span> ret:
+        imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        result = hands.process(imgRGB)
+        <span class="hljs-comment"># print(result.multi_hand_landmarks)</span>
+        imgHeight = img.shape[<span class="hljs-number">0</span>]
+        imgWidth = img.shape[<span class="hljs-number">1</span>]
+        <span class="hljs-keyword">if</span> result.multi_hand_landmarks:
+            <span class="hljs-keyword">for</span> handLms <span class="hljs-keyword">in</span> result.multi_hand_landmarks:
+                <span class="hljs-comment"># 绘制检测到的手部21个点及线条</span>
+                mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS, handLmsStyle, handConStyle)
+                <span class="hljs-comment"># 获取21个点的坐标</span>
+                <span class="hljs-keyword">for</span> i, lm <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(handLms.landmark):
+                    xPos = <span class="hljs-built_in">int</span>(lm.x * imgWidth)
+                    yPos = <span class="hljs-built_in">int</span>(lm.y * imgHeight)
+                    <span class="hljs-comment"># cv2.putText(img, str(i), (xPos - 25, yPos + 5), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 2)</span>
+                    <span class="hljs-comment"># if i == 4:</span>
+                    <span class="hljs-comment">#     cv2.circle(img, (xPos, yPos), 15, (0, 0, 255), cv2.FILLED)</span>
+                    <span class="hljs-built_in">print</span>(i, xPos, yPos)
+        cTime = time.time()
+        fps = <span class="hljs-number">1</span> / (cTime - pTime)
+        pTime = cTime
+        cv2.putText(img, <span class="hljs-string">f&quot;FPS: <span class="hljs-subst">&#123;<span class="hljs-built_in">int</span>(fps)&#125;</span>&quot;</span>, (<span class="hljs-number">30</span>, <span class="hljs-number">50</span>), cv2.FONT_HERSHEY_SIMPLEX, <span class="hljs-number">1</span>, (<span class="hljs-number">255</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-number">3</span>)
+        cv2.imshow(<span class="hljs-string">&#x27;img&#x27;</span>, img)
+    <span class="hljs-keyword">if</span> cv2.waitKey(<span class="hljs-number">1</span>) == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;q&#x27;</span>):
+        <span class="hljs-keyword">break</span>
+</code></pre></div>
 
                 
               </div>
@@ -294,6 +328,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">#计算机视觉</a>
+      
+    </div>
+  
 </div>
 
 
@@ -302,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/10/05/hello-world/</div>
+      <div>openCV手部识别</div>
+      <div>http://example.com/2022/10/05/openCV手部识别/</div>
     </div>
     <div class="license-meta">
       
@@ -347,15 +388,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/05/openCV%E6%89%8B%E9%83%A8%E8%AF%86%E5%88%AB/" title="openCV手部识别">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">openCV手部识别</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/10/05/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
